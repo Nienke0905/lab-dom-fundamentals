@@ -64,9 +64,22 @@ for (x=0;x<studentsPictures.length;x++){
   studentsPictures[x].style.border = "5px solid black";
 }
 
+function generatePictures(){
+    let studentsPics = [];
+    for (let x=0;x<students.length;x++){
+        let studentPic = document.createElement("IMG");
+        studentPic.setAttribute("src",`https://wd-ft-may.s3.amazonaws.com/${students[x].firstname}.png`);
+        studentPic.style.width = "200px";
+        studentPic.style.border = "5px solid black";
+        studentsPics.push(studentPic);
+    }
+    return studentsPics;
+}
+
 function favPicture(){
+    let studentsPics = generatePictures();
     let header2 = document.querySelector("h2");
-    let randomStudent = studentsPictures[Math.floor(Math.random() * studentsPictures.length)];
+    let randomStudent = studentsPics[Math.floor(Math.random() * studentsPictures.length)];
     header2.replaceChild(randomStudent,header2.childNodes[0]);
 }
 
